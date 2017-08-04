@@ -5,14 +5,14 @@ For use exclusively on SilverStripe platform. This is designed to allow transfer
 ## Installation
 
 Add to `composer.json` under `require`
-`"silverstripeltd/silverstripe-platform-assetsync": "dev-master",`
+`"silverstripe-platform/assetsync": "^0.1.0",`
 
 Then under `repositories`
 
 ```
 {
 	"type": "vcs",
-	"url": "git@github.com:silverstripeltd/silverstripe-platform-assetsync.git"
+	"url": "git@github.com:andrewandante/silverstripe-platform-assetsync.git"
 }
 ```
 

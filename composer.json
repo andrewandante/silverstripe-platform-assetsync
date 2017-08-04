@@ -1,0 +1,12 @@
+{
+    "name": "silverstripe-platform/assetsync",
+    "description": "Syncs assets between environments where snapshots time out",
+    "type": "silverstripe-module",
+    "require": {
+        "symbiote/silverstripe-queuedjobs": "^2.4.0",
+        "silverstripe/crontask": "^1.0.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.0"
+    }
+}

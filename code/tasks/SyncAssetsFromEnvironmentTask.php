@@ -18,7 +18,7 @@ class SyncAssetsFromEnvironmentTask extends BuildTask
             return false;
         }
 
-        $delay = $request->getVar('delay');
+        $delay = (int) $request->getVar('delay');
         if (!$delay || !is_numeric($delay)) {
             $log('Param "delay" must be int representing number of hours to delay execution by.');
         }

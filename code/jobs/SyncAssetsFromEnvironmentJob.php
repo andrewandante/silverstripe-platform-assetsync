@@ -14,18 +14,15 @@ class SyncAssetsFromEnvironmentJob extends AbstractQueuedJob
     public function process()
     {
         $command = [];
-        $command[] = 'flock -n -e /var/run/prods3assets.lock';
+        $command[] = 'flock -n -e /var/run/prods3assets.lock -c';
         $command[] = '"/usr/local/bin/aws s3 sync --only-show-errors';
         $command[] = SSP_ASSET_SYNC_SOURCE;
         $command[] = ASSETS_PATH;
         $command[] = '--exclude *.snapshot.restore*';
         $command[] = '--exclude *.snapshot.store*';
         $command[] = '&& chown -R www-data:www-data';
-        $command[] = ASSETS_PATH;
+        $command[] = ASSETS_PATH.'"';
 
         exec(implode(' ', $command));
-
     }
-
-
 }

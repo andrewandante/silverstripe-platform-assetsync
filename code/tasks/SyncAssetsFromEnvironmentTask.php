@@ -18,9 +18,12 @@ class SyncAssetsFromEnvironmentTask extends BuildTask
             return false;
         }
 
-        $delay = (int) $request->getVar('delay');
-        if (!$delay || !is_numeric($delay)) {
+        $delay = $request->getVar('delay');
+        if ($delay == 'none') {
+            $delay = 0;
+        } elseif (!$delay || !is_numeric($delay)) {
             $log('Param "delay" must be int representing number of hours to delay execution by.');
+            return false;
         }
         $delay *= 60 * 60; // convert hours to seconds
         $queueTime = date('Y-m-d H:i:s', time() + $delay);

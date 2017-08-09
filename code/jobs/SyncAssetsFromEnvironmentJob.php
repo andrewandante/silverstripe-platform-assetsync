@@ -25,5 +25,7 @@ class SyncAssetsFromEnvironmentJob extends AbstractQueuedJob
         $command[] = ASSETS_PATH.'"';
 
         exec(implode(' ', $command));
+
+        return;
     }
 }

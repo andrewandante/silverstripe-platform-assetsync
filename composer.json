@@ -2,9 +2,16 @@
     "name": "silverstripe-platform/assetsync",
     "description": "Syncs assets between environments where snapshots time out",
     "type": "silverstripe-module",
+    "license": "BSD-3-Clause",
+    "keywords": ["silverstripe", "silverstripe-platform", "assets"],
+    "authors": [
+        {
+            "name": "Andrew Aitken-Fincham",
+            "email": "andrew@silverstripe.com"
+        }
+    ],
     "require": {
-        "symbiote/silverstripe-queuedjobs": "^2.4.0",
-        "silverstripe/crontask": "^1.0.0"
+        "symbiote/silverstripe-queuedjobs": "^2.4.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.0"

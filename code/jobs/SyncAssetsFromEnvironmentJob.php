@@ -14,8 +14,9 @@ class SyncAssetsFromEnvironmentJob extends AbstractQueuedJob
     public function process()
     {
         $command = [];
-        $command[] = 'flock -n -e /var/run/prods3assets.lock -c';
-        $command[] = '"/usr/local/bin/aws s3 sync --only-show-errors';
+        $command[] = 'flock -n -e';
+        $command[] = BASE_PATH.'/assetsync/s3envsync.lock';
+        $command[] = '-c "/usr/local/bin/aws s3 sync --only-show-errors';
         $command[] = SSP_ASSET_SYNC_SOURCE;
         $command[] = ASSETS_PATH;
         $command[] = '--exclude *.snapshot.restore*';

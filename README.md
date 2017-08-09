@@ -16,4 +16,31 @@ Then under `repositories`
 }
 ```
 
+## IAM Policy
 
+Requires a new policy with the following:
+
+```json
+{
+    "Statement": [
+        {
+            "Resource": "arn:aws:s3:::<bucket_name>",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Resource": "arn:aws:s3:::<bucket_name>/<cluster>-<stack>-<env>Xnfs/*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectAcl"
+            ],
+            "Effect": "Allow"
+        }
+    ],
+    "Version": "2012-10-17"
+}
+```
+
+Add this to both the server role for environment and NFS you are running this from i.e. if I am running this from UAT, I want the policy to contain references to Prod, and add the policy to the UAT server role and the UATXNFS server role.

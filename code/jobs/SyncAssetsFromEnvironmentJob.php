@@ -24,8 +24,10 @@ class SyncAssetsFromEnvironmentJob extends AbstractQueuedJob
         $command[] = '&& chown -R www-data:www-data';
         $command[] = ASSETS_PATH.'"';
 
-        exec(implode(' ', $command));
-
-        return;
+        exec(implode(' ', $command), $out, $status);
+        if ($status == 0) {
+            $this->isComplete = true;
+            return;
+        }
     }
 }
